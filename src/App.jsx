@@ -19,9 +19,8 @@ export default function App() {
         <Route exact path="/logged-in">
           <LoggedInPage />
         </Route>
-        <Route exact path="/logged-in/:chatId">
-          <MessagesPanel />
-        </Route>
+        {/* <Route exact path="/logged-in/:chatId">
+        </Route> */}
         <Route exact path="/">
           <Redirect to="/login" />
         </Route>
