@@ -24,9 +24,9 @@ export default function App() {
         <Route exact path="/">
           <Redirect to="/login" />
         </Route>
-        {/* <Route exact path="/">
+        <Route exact path="/">
           {userId ? <Redirect to="/logged-in" /> : <LoginPage />}
-        </Route> */}
+        </Route>
       </Switch>
     </Router>
   );
