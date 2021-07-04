@@ -1,9 +1,8 @@
 import MessagesPanel from "../components/MessagesPanel";
-import { useParams } from "react-router-dom";
 import SideChatList from "../components/SideChatList";
 
-function LoggedInPage() {
-  let { user } = useParams();
+function LoggedInPage({ currentUser, otherUsers, conversations }) {
+  if (!currentUser) return null;
 
   return (
     <div className="main-wrapper">
@@ -15,10 +14,10 @@ function LoggedInPage() {
             className="avatar"
             width="50"
             height="50"
-            src={user.avatar}
-            alt={`${user.firstName} ${user.lastName}`}
+            src={currentUser.avatar}
+            alt={`${currentUser.firstName} ${currentUser.lastName}`}
           />
-          <h3>{`${user.firstName} ${user.lastName}`}</h3>
+          <h3>{`${currentUser.firstName} ${currentUser.lastName}`}</h3>
         </header>
 
         {/* <!-- Search form --> */}
@@ -37,7 +36,11 @@ function LoggedInPage() {
   
    -->
       <!--  --> */}
-        <SideChatList />
+        <SideChatList
+          currentUser={currentUser}
+          users={otherUsers}
+          conversations={conversations}
+        />
       </aside>
 
       {/* <!-- Main Chat Section --> */}

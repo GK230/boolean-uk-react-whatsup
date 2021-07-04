@@ -1,14 +1,6 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-function LoginPage() {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:4000/users")
-      .then((resp) => resp.json())
-      .then((users) => setUsers(users));
-  }, []);
-
+function LoginPage({ users, logIn }) {
   return (
     <div className="main-wrapper login">
       <section className="login-section">
@@ -16,7 +8,7 @@ function LoginPage() {
         <ul>
           {users.map((user) => (
             <li key={user.id}>
-              <Link to={`/logged-in/${user.id}`}>
+              <Link to={"/logged-in"}>
                 <button className="user-selection">
                   <img
                     className="avatar"
@@ -24,6 +16,7 @@ function LoginPage() {
                     height="50"
                     src={user.avatar}
                     alt={`${user.firstName} ${user.lastName}`}
+                    onClick={() => logIn(user.id)} className="user-selection"
                   />
                   <h3>{`${user.firstName} ${user.lastName}`}</h3>
                 </button>
